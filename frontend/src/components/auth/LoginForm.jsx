@@ -60,18 +60,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <div>
-          <label className="block text-gray-700 mb-2">Tipo de Usuario</label>
-          <select
-            value={formData.role}
-            onChange={(e) => setFormData({...formData, role: e.target.value})}
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary"
-          >
-            <option value="espectador">Espectador</option>
-            <option value="organizador">Organizador</option>
-            <option value="admin">Administrador</option>
-          </select>
-        </div>
+
 
         <button
           type="submit"

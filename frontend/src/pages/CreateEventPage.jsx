@@ -16,13 +16,33 @@ const CreateEventPage = () => {
     location: {
       name: '',
       address: '',
-      city: '',
-      country: ''
     },
     image: '',
     price: '',
     capacity: ''
   });
+  const CIUDADES_AMBA = [
+    'CABA',
+    'Quilmes',
+    'San Isidro',
+    'San Fernando',
+    'Tigre',
+    'Morón',
+    'Lomas de Zamora',
+    'Lanús',
+    'San Miguel',
+    'La Matanza',
+    'Tres de Febrero',
+    'Vicente López',
+    'Almirante Brown',
+    'Florencio Varela',
+    'Berazategui',
+    'Esteban Echeverría',
+    'José C. Paz',
+    'Malvinas Argentinas',
+    'Moreno',
+    'Ezeiza'
+  ].sort(); // Para ordenar alfabéticamente
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -144,6 +164,26 @@ const CreateEventPage = () => {
                 required
               />
             </div>
+
+              <div>
+                <label className="block text-gray-700 mb-2">Ciudad</label>
+                <select
+                  value={formData.location.city}
+                  onChange={(e) => setFormData({
+                    ...formData,
+                    location: {...formData.location, city: e.target.value}
+                  })}
+                  className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Seleccionar ciudad</option>
+                  {CIUDADES_AMBA.map((ciudad) => (
+                    <option key={ciudad} value={ciudad}>
+                      {ciudad}
+                    </option>
+                  ))}
+                </select>
+              </div>
           </div>
 
           {/* Por ahora mantener ciudad y país fijos como AMBA */}
