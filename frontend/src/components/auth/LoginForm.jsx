@@ -60,6 +60,7 @@ const LoginForm = () => {
           />
         </div>
 
+<<<<<<< HEAD
         {/* <div>
           <label className="block text-gray-700 mb-2">Tipo de Usuario</label>
           <select
@@ -72,6 +73,9 @@ const LoginForm = () => {
             <option value="admin">Administrador</option>
           </select>
         </div> */}
+=======
+
+>>>>>>> f29ef2e33c3061f7ee5d85820e5ada527ab35648
 
         <button
           type="submit"

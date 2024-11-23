@@ -5,7 +5,7 @@ import EventCard from '../components/event/EventCard';
 import EventModal from '../components/event/EventModal';
 import { eventService } from '../services/api';
 
-const Home = () => {
+const HomePage = () => {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,6 +32,7 @@ const Home = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleOpenModal = (event) => {
     setSelectedEvent(event);
   };
@@ -40,12 +41,18 @@ const Home = () => {
     setSelectedEvent(null);
   };
 
+=======
+>>>>>>> f29ef2e33c3061f7ee5d85820e5ada527ab35648
   return (
     <div className="min-h-screen bg-gray-50">
       <Hero />
       
       <div className="container mx-auto px-4">
+<<<<<<< HEAD
       <SearchBar onSearch={handleSearch} />
+=======
+        <SearchBar />
+>>>>>>> f29ef2e33c3061f7ee5d85820e5ada527ab35648
         
         {/* Sección de eventos destacados */}
         <section className="py-16">
@@ -63,7 +70,11 @@ const Home = () => {
                 <EventCard
                   key={event._id}
                   event={event}
+<<<<<<< HEAD
                   onOpenModal={handleOpenModal}
+=======
+                  onOpenModal={setSelectedEvent}
+>>>>>>> f29ef2e33c3061f7ee5d85820e5ada527ab35648
                 />
               ))}
             </div>
@@ -75,11 +86,15 @@ const Home = () => {
       {selectedEvent && (
         <EventModal 
           event={selectedEvent} 
+<<<<<<< HEAD
           onClose={handleCloseModal} 
+=======
+          onClose={() => setSelectedEvent(null)} 
+>>>>>>> f29ef2e33c3061f7ee5d85820e5ada527ab35648
         />
       )}
     </div>
   );
 };
 
-export default Home;
+export default HomePage;

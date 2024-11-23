@@ -7,7 +7,12 @@ const EventCard = ({ event = {}, onOpenModal }) => {
     title = "Battle Dance 2024",
     image = "/api/placeholder/400/200",
     date = "2024-12-20",
-    location = { city: "Buenos Aires", country: "Argentina" },
+    location = { 
+      name: "Sin ubicación",
+      address: "Sin dirección",
+      city: "Buenos Aires", 
+      country: "Argentina" 
+    },
     price = 2500,
     capacity = 100,
     danceStyles = ["Hip Hop", "Breaking"]
@@ -45,16 +50,25 @@ const EventCard = ({ event = {}, onOpenModal }) => {
         <div>
           <h3 className="text-xl font-bold mb-2 text-gray-800 line-clamp-2">{title}</h3>
           
-          {/* Fecha y Ubicación */}
+            {/* Fecha y Ubicación */}
           <div className="space-y-2 mb-4">
             <div className="flex items-center text-gray-600">
               <Calendar className="w-4 h-4 mr-2" />
               <span>{new Date(date).toLocaleDateString()}</span>
             </div>
-            <div className="flex items-center text-gray-600">
-              <MapPin className="w-4 h-4 mr-2" />
-              <span>{location.city}, {location.country}</span>
-            </div>
+            
+              <div className="flex items-center text-gray-600">
+                <MapPin className="w-4 h-4 mr-2" />
+                <span>
+                  {location.name && (
+                    <>
+                      {location.name}
+                      {location.city && ` - ${location.city}`}
+                    </>
+                  )}
+                </span>
+              </div>
+              
             <div className="flex items-center text-gray-600">
               <Users className="w-4 h-4 mr-2" />
               <span>Capacidad: {capacity} personas</span>

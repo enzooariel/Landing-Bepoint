@@ -22,12 +22,47 @@ const eventSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  location: {
-    name: { type: String, required: true },
-    address: { type: String, required: true },
-    city: { type: String, default: 'Buenos Aires' },
-    country: { type: String, default: 'Argentina' }
-  },
+  
+      location: {
+        name: {
+          type: String,
+          required: true
+        },
+        address: {
+          type: String,
+          required: true
+        },
+        city: {
+          type: String,
+          required: true,
+          enum: [
+            'CABA',
+            'Quilmes',
+            'San Isidro',
+            'San Fernando',
+            'Tigre',
+            'Morón',
+            'Lomas de Zamora',
+            'Lanús',
+            'San Miguel',
+            'La Matanza',
+            'Tres de Febrero',
+            'Vicente López',
+            'Almirante Brown',
+            'Florencio Varela',
+            'Berazategui',
+            'Esteban Echeverría',
+            'José C. Paz',
+            'Malvinas Argentinas',
+            'Moreno',
+            'Ezeiza'
+          ]
+        },
+        country: {
+          type: String,
+          default: 'Argentina'
+        }
+      },
   image: {
     type: String,
     default: ''
