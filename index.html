@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Point - Conecta con la Danza Urbana</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e56f0e;
+            --black: #000000;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem;
+            background: var(--white);  /* Cambiado a blanco */
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Agregado para dar profundidad */
+        }
+
+        .navbar .logo {
+            height: 40px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: var(--black);  /* Cambiado a negro */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/img/locking.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            padding: 5rem 1rem;
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background: #f5f5f5;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .app-preview {
+            padding: 5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .app-preview-content {
+            flex: 1;
+        }
+
+        .app-preview-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .app-preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        .app-preview p {
+            margin-bottom: 2.5rem;  /* Aumentar de 2rem a 2.5rem o el valor que prefieras */
+        }
+
+        .cta {
+            padding: 5rem 1rem;
+            text-align: center;
+            background: var(--primary);
+        }
+
+        .cta h2 {
+            margin-bottom: 2rem;
+        }
+
+        .cta .btn {
+            background: var(--black);
+        }
+
+        .contact {
+            padding: 5rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: var(--white);
+            border-radius: 5px;
+        }
+
+        .contact button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .footer {
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .app-preview {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="/img/logo.png" alt="Be Point Logo" class="logo">
+        <div class="nav-links">
+            <a href="#features">Características</a>
+            <a href="#app">La App</a>
+            <a href="#contact">Contacto</a>
+            <a href="#" class="btn">Descargar</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Conecta con la <span style="color: var(--primary)">Danza Urbana</span></h1>
+            <p>Descubre eventos, conecta con la comunidad y vive la cultura del baile urbano como nunca antes.</p>
+            <a href="#" class="btn">Descarga la App</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up">
+                <div class="feature-icon">🎭</div>
+                <h3>Descubre Eventos</h3>
+                <p>Encuentra battles, workshops y shows de danza urbana cerca de ti.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">🎪</div>
+                <h3>Crea tu Evento</h3>
+                <p>Organiza y promociona tus eventos de baile de manera fácil y efectiva.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">👥</div>
+                <h3>Conecta</h3>
+                <p>Únete a la comunidad de bailarines y comparte tu pasión por el baile.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-preview" id="app">
+        <div class="app-preview-content" data-aos="fade-right">
+            <h2>Tu Punto de Encuentro con la Danza</h2>
+            <p>Be Point es la plataforma definitiva para la comunidad de danza urbana. Descubre eventos, conecta con otros bailarines y mantente al día con la escena local.</p>
+            <a href="#" class="btn">Conoce más</a>
+        </div>
+        <div class="app-preview-image" data-aos="fade-left">
+            <img src="/img/break.jpeg" alt="App Preview">
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>¿Listo para empezar?</h2>
+        <a href="#" class="btn">Descarga Ahora</a>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" placeholder="Nombre">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Mensaje" rows="4"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                </svg>
+            </a>
+        </div>
+        <p>&copy; 2024 Be Point. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 1)'; // Blanco sólido
+                    navbar.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)'; // Sombra más pronunciada al scrollear
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)'; // Blanco ligeramente transparente
+                    navbar.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)'; // Sombra más sutil
+                }
+            });
+    </script>
+</body>
+</html>
